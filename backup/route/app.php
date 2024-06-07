@@ -10,8 +10,11 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
+Route::miss(route:'Error/miss');//当没有定位到路由时的跳转
+
 Route::get('think', function () {
     return 'hello,ThinkPHP6!';
 });
 
+Route::get('/', 'index');
 Route::get('hello/:name', 'index/hello');
