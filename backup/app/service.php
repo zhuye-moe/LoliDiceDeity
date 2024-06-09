@@ -7,5 +7,4 @@ use app\AppService;
 return [
     AppService::class,
 
-    tauthz\TauthzService::class,//auth https://www.thinkphp.cn/ext/106
 ];
