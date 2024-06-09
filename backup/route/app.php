@@ -18,3 +18,10 @@ Route::get('think', function () {
 
 Route::get('/', 'index');
 Route::get('hello/:name', 'index/hello');
+
+//用户登录
+Route::group('user',function(){
+    Route::get('login','userController/login');
+    Route::get('logout','userController/logout');
+    Route::get('read','userController/read');
+});
