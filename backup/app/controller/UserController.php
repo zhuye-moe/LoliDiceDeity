@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+// declare (strict_types = 1);
 
 namespace app\controller;
 
@@ -49,11 +49,10 @@ class UserController
         //
         // $user = Auth::user();
         $user = auth()->user();
-        // $user_data = [
-        //     'username' => $user->username,
-        //     'token' => $user->test_token
-        // ];
-        return re_mew($user)->success('请求成功');
+        if($user){
+            return re_mew($user->toArray())->success('获取成功');
+        }
+        return re_mew()->success('数据错误');
     }
 
     /**
@@ -98,9 +97,22 @@ class UserController
      */
     public function login(Request $request)
     {
-        $login = auth()->login(User::find(1), $remember = false);
-        
-        return re_mew($login)->success('登录成功');
+        $login = auth()->attempt(['username'=>'admin',"password" => "123456"]);
+        if ($login){ 
+            $user = auth()->user();
+            // 暂时先不管token吧
+            // $token = $user->createToken("test-token");
+            $data = [
+                'user' => auth()->user(),
+                // 'access_token' => $token,
+                // 'token_type' => 'bearer',
+                // 'expires_in' => auth('jwt')->factory()->getTTL() * 60,
+                // 'claims' => auth('jwt')->getPayload()
+            ];
+            return re_mew($data)->success('登录成功');
+        } else{
+            return re_mew()->success('登录失败');
+        }
     }
 
     /**

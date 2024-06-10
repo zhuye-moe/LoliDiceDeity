@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+// declare (strict_types = 1);
 
 namespace app\model;
 
@@ -15,4 +15,12 @@ use tp5er\think\auth\sanctum\HasApiTokens;
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubjectContract
 {
     use Authenticatable,HasApiTokens,Authorizable,JWTSubject;
+
+    protected $hidden = ['password'];
+    protected $appends = ['full_name'];
+    
+    public function getFullNameAttribute()
+    {
+        return '小loli';
+    }
 }

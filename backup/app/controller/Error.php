@@ -13,7 +13,7 @@ class Error
     {
         return json([
             'code'=>'404',
-            'message'=>'页面不存在',
+            'message'=>'试图插入一个不存在接口呢，真是扎古～扎—~古～(*ノ` ▽｀) ～♡',
         ])->code(404);
     }
 }

@@ -57,7 +57,7 @@ return [
             'driver' => 'session',
             'provider' => 'user',
             // Set the membership validity period to 24 hours
-            //"remember" => 24 * 3600
+            "remember" => 24 * 3600
         ],
         "token" => [
             'driver' => 'token',
@@ -87,9 +87,13 @@ return [
     */
 
     'providers' => [
+        // 'user' => [
+        //     'driver' => 'model', //eloquent
+        //     'model' => \tp5er\think\auth\User::class,
+        // ],
         'user' => [
             'driver' => 'model', //eloquent
-            'model' => \tp5er\think\auth\User::class,
+            'model' => app\model\User::class,
         ],
         //'user' => [
         //    'driver' => 'database',
